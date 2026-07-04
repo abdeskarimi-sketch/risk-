@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HORMUZ COCKPIT — Strait of Hormuz Situational Awareness</title>
+<style>
+  :root{
+    --bg:#0a0e14; --panel:#111721; --panel2:#0d131c; --line:#1e2836;
+    --ink:#e8eef5; --dim:#8496ab; --faint:#5a6b82;
+    --amber:#e0a021; --teal:#2aa7c4; --green:#2e9d63; --red:#d2453f; --orange:#d9772e;
+    --mono:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;
+    -webkit-font-smoothing:antialiased;padding:0 0 60px}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+  header{border-bottom:1px solid var(--line);background:linear-gradient(180deg,#0c1220,#0a0e14);
+    position:sticky;top:0;z-index:20;backdrop-filter:blur(6px)}
+  .hd{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;max-width:1180px;margin:0 auto;flex-wrap:wrap;gap:10px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px var(--amber);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .brand h1{font-size:15px;font-weight:700;letter-spacing:.14em;font-family:var(--mono)}
+  .brand span{color:var(--faint);font-size:11px;font-family:var(--mono);letter-spacing:.1em}
+  .stamp{font-family:var(--mono);font-size:11px;color:var(--dim);text-align:right}
+  .stamp b{color:var(--teal)}
+  .banner{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:20px 0}
+  .banner .k{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--faint);text-transform:uppercase}
+  .banner .status{font-size:17px;font-weight:600;margin-top:4px;color:var(--ink)}
+  .brow{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:14px}
+  .bcell{background:var(--panel2);padding:11px 13px}
+  .bcell .k{margin-bottom:3px}
+  .bcell .v{font-size:13px;font-weight:600}
+  .grid{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;margin-top:4px}
+  @media(max-width:860px){.grid{grid-template-columns:1fr}.brow{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+  .card h2{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--dim);text-transform:uppercase;
+    margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .card h2::before{content:'';width:3px;height:13px;background:var(--amber);border-radius:2px}
+  .scen{margin-bottom:13px}
+  .scen:last-child{margin-bottom:0}
+  .scen .top{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:5px}
+  .scen .nm{font-size:13.5px;font-weight:600}
+  .scen .nm .id{font-family:var(--mono);color:var(--faint);margin-right:7px;font-size:12px}
+  .scen .pct{font-family:var(--mono);font-size:15px;font-weight:700}
+  .bar{height:7px;background:var(--panel2);border-radius:4px;overflow:hidden;border:1px solid var(--line)}
+  .bar>span{display:block;height:100%;border-radius:4px;transition:width .8s ease}
+  .scen .desc{font-size:11.5px;color:var(--dim);margin-top:6px}
+  .scen .desc b{color:var(--faint);font-weight:600;font-family:var(--mono);font-size:10px;letter-spacing:.05em}
+  .chartwrap{position:relative}
+  svg{width:100%;height:auto;display:block}
+  .axlbl{font-family:var(--mono);font-size:9px;fill:var(--faint)}
+  .tnote{font-size:10.5px;color:var(--faint);margin-top:10px;line-height:1.45;font-style:italic}
+  .legend{display:flex;gap:14px;margin-top:8px;font-family:var(--mono);font-size:10px;color:var(--dim)}
+  .legend i{width:16px;height:2px;display:inline-block;vertical-align:middle;margin-right:5px}
+  .gate{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line)}
+  .gate:last-child{border-bottom:0}
+  .gn{font-family:var(--mono);font-size:11px;color:var(--faint);width:14px;flex:0 0 14px;padding-top:2px}
+  .glight{width:9px;height:9px;border-radius:50%;flex:0 0 9px;margin-top:5px}
+  .gbody{flex:1}
+  .gname{font-size:12.5px;font-weight:600}
+  .gdetail{font-size:11px;color:var(--dim);margin-top:2px}
+  .geta{font-family:var(--mono);font-size:10px;color:var(--amber);margin-top:3px}
+  .sig{display:flex;align-items:center;gap:9px;padding:7px 0;font-size:12px;border-bottom:1px dotted var(--line)}
+  .sig:last-child{border-bottom:0}
+  .pill{font-family:var(--mono);font-size:9px;letter-spacing:.08em;padding:2px 7px;border-radius:20px;text-transform:uppercase;flex:0 0 auto}
+  .pill.no{background:rgba(210,69,63,.14);color:#e77;border:1px solid rgba(210,69,63,.3)}
+  .pill.yes{background:rgba(46,157,99,.14);color:#5cba86;border:1px solid rgba(46,157,99,.3)}
+  .pill.warn{background:rgba(224,160,33,.14);color:var(--amber);border:1px solid rgba(224,160,33,.3)}
+  .sig .lb{flex:1}
+  .sig .wy{color:var(--faint);font-size:10.5px}
+  ul.clean{list-style:none}
+  ul.clean li{font-size:12px;color:var(--dim);padding:6px 0 6px 16px;position:relative;border-bottom:1px solid var(--line)}
+  ul.clean li:last-child{border-bottom:0}
+  ul.clean li::before{content:'▹';position:absolute;left:0;color:var(--amber)}
+  .act h3{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin:12px 0 6px;color:var(--faint)}
+  .act h3:first-child{margin-top:0}
+  .tag{display:inline-block;font-family:var(--mono);font-size:9px;padding:1px 6px;border-radius:4px;margin-right:6px}
+  .tag.hold{background:rgba(42,167,196,.15);color:var(--teal)}
+  .tag.now{background:rgba(224,160,33,.15);color:var(--amber)}
+  .tag.down{background:rgba(90,107,130,.2);color:var(--dim)}
+  .prices{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+  .pcell{background:var(--panel2);padding:10px 12px;text-align:center}
+  .pcell .pk{font-family:var(--mono);font-size:9px;color:var(--faint);letter-spacing:.08em}
+  .pcell .pv{font-size:16px;font-weight:700;margin-top:3px;font-family:var(--mono)}
+  footer{margin-top:26px;padding-top:16px;border-top:1px solid var(--line);font-size:10.5px;color:var(--faint);font-family:var(--mono);line-height:1.6}
+  .err{background:rgba(210,69,63,.1);border:1px solid rgba(210,69,63,.35);color:#e88;padding:14px;border-radius:8px;font-family:var(--mono);font-size:12px;margin:20px 0}
+  .full{grid-column:1/-1}
+</style>
+</head>
+<body>
+<header>
+  <div class="hd">
+    <div class="brand">
+      <div class="dot"></div>
+      <div>
+        <h1>HORMUZ COCKPIT</h1>
+        <span>STRAIT OF HORMUZ · SITUATIONAL AWARENESS</span>
+      </div>
+    </div>
+    <div class="stamp" id="stamp">loading…</div>
+  </div>
+</header>
+
+<div class="wrap" id="app">
+  <div class="banner">
+    <div class="k">Current Status</div>
+    <div class="status" id="statusLine">—</div>
+    <div class="brow">
+      <div class="bcell"><div class="k">War Status</div><div class="v" id="warStatus">—</div></div>
+      <div class="bcell"><div class="k">Strait Status</div><div class="v" id="straitStatus">—</div></div>
+      <div class="bcell"><div class="k">Trade Posture</div><div class="v" id="tradePosture">—</div></div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>Scenario Probabilities</h2>
+      <div id="scenarios"></div>
+    </div>
+    <div class="card">
+      <h2>Daily Transit — Strait of Hormuz</h2>
+      <div class="chartwrap" id="chart"></div>
+      <div class="legend">
+        <span><i style="background:var(--teal)"></i>vessels/day</span>
+        <span><i style="background:var(--faint)"></i>pre-war ~100/day</span>
+      </div>
+      <div class="tnote" id="transitNote"></div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:16px">
+    <div class="card">
+      <h2>Four Gates to Reopening</h2>
+      <div id="gates"></div>
+    </div>
+    <div class="card">
+      <h2>Green-Light Signals</h2>
+      <div id="signals"></div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:16px">
+    <div class="card">
+      <h2>Watchlist — Next 72h</h2>
+      <ul class="clean" id="watchlist"></ul>
+    </div>
+    <div class="card act">
+      <h2>Action Board</h2>
+      <div id="actions"></div>
+    </div>
+  </div>
+
+  <div class="card full" style="margin-top:16px">
+    <h2>Market Snapshot</h2>
+    <div class="prices" id="prices"></div>
+  </div>
+
+  <footer id="footer"></footer>
+</div>
+
+<script>
+const fmtPct = n => n + '%';
+async function load(){
+  let d;
+  try{
+    const r = await fetch('data/state.json?t=' + Date.now());
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    d = await r.json();
+  }catch(e){
+    document.getElementById('app').innerHTML =
+      '<div class="err">Could not load data/state.json — '+e.message+
+      '. If viewing locally, serve over http (e.g. python -m http.server).</div>';
+    return;
+  }
+  render(d);
+}
+function render(d){
+  document.getElementById('stamp').innerHTML =
+    'AS OF <b>'+d.meta.as_of_label+'</b><br>src: '+d.meta.generated_by+' · conf: '+d.meta.data_confidence;
+  document.getElementById('statusLine').textContent = d.headline.status_line;
+  document.getElementById('warStatus').textContent = d.headline.war_status;
+  document.getElementById('straitStatus').textContent = d.headline.strait_status;
+  document.getElementById('tradePosture').textContent = d.headline.trade_posture;
+
+  document.getElementById('scenarios').innerHTML = d.scenarios.map(s=>`
+    <div class="scen">
+      <div class="top">
+        <div class="nm"><span class="id">${s.id}</span>${s.name}</div>
+        <div class="pct" style="color:${s.color}">${fmtPct(s.probability)}</div>
+      </div>
+      <div class="bar"><span style="width:${s.probability}%;background:${s.color}"></span></div>
+      <div class="desc"><b>PATH</b> ${s.pathway}<br><b>SoH</b> ${s.hormuz} &nbsp; <b>TRADE</b> ${s.trade}</div>
+    </div>`).join('');
+
+  renderChart(d.transit);
+  document.getElementById('transitNote').textContent = d.transit.note;
+
+  const gc = {red:'var(--red)',amber:'var(--amber)',green:'var(--green)'};
+  document.getElementById('gates').innerHTML = d.gates.map(g=>`
+    <div class="gate">
+      <div class="gn">${g.n}</div>
+      <div class="glight" style="background:${gc[g.status]||'var(--faint)'};box-shadow:0 0 8px ${gc[g.status]||'transparent'}"></div>
+      <div class="gbody">
+        <div class="gname">${g.name}</div>
+        <div class="gdetail">${g.detail}</div>
+        <div class="geta">ETA · ${g.eta}</div>
+      </div>
+    </div>`).join('');
+
+  const pc = {'not yet':'no','active':'yes','first test':'warn','yes':'yes','no':'no'};
+  document.getElementById('signals').innerHTML = d.signals.map(s=>`
+    <div class="sig">
+      <span class="pill ${pc[s.state]||'no'}">${s.state}</span>
+      <span class="lb">${s.label}</span>
+      <span class="wy">${s.why}</span>
+    </div>`).join('');
+
+  document.getElementById('watchlist').innerHTML = d.watchlist.map(w=>`<li>${w}</li>`).join('');
+
+  const a=d.action_board;
+  document.getElementById('actions').innerHTML =
+    '<h3>Hold</h3>'+a.hold.map(x=>`<div style="font-size:12px;color:var(--dim);padding:3px 0"><span class="tag hold">HOLD</span>${x}</div>`).join('')+
+    '<h3>Do Now</h3>'+a.do_now.map(x=>`<div style="font-size:12px;color:var(--dim);padding:3px 0"><span class="tag now">NOW</span>${x}</div>`).join('')+
+    '<h3>Stand Down</h3>'+a.stand_down.map(x=>`<div style="font-size:12px;color:var(--dim);padding:3px 0"><span class="tag down">DOWN</span>${x}</div>`).join('');
+
+  const p=d.prices;
+  document.getElementById('prices').innerHTML =
+    `<div class="pcell"><div class="pk">BRENT</div><div class="pv" style="color:var(--amber)">$${p.brent_usd}</div></div>
+     <div class="pcell"><div class="pk">WTI</div><div class="pv" style="color:var(--amber)">$${p.wti_usd}</div></div>
+     <div class="pcell"><div class="pk">TTF GAS €/MWh</div><div class="pv" style="color:var(--teal)">${p.ttf_gas_eur}</div></div>
+     <div class="pcell"><div class="pk">WAR-RISK PREM</div><div class="pv" style="color:var(--red);font-size:13px">${p.war_risk_premium_multiple}</div></div>`;
+
+  document.getElementById('footer').innerHTML =
+    d.meta.disclaimer + '<br>Generated: ' + d.meta.generated_at +
+    ' · ' + d.meta.next_refresh_hint;
+}
+function renderChart(t){
+  const data=t.series, W=520, H=210, pad={l:30,r:12,t:14,b:26};
+  const iw=W-pad.l-pad.r, ih=H-pad.t-pad.b;
+  const maxY=Math.max(t.prewar_baseline, ...data.map(d=>d.count));
+  const x=i=>pad.l+(i/(data.length-1))*iw;
+  const y=v=>pad.t+ih-(v/maxY)*ih;
+  let grid='';
+  [0,.25,.5,.75,1].forEach(f=>{
+    const gy=pad.t+ih-f*ih, val=Math.round(maxY*f);
+    grid+=`<line x1="${pad.l}" y1="${gy}" x2="${W-pad.r}" y2="${gy}" stroke="#1e2836" stroke-width="1"/>`;
+    grid+=`<text x="${pad.l-6}" y="${gy+3}" text-anchor="end" class="axlbl">${val}</text>`;
+  });
+  const by=y(t.prewar_baseline);
+  const baseline=`<line x1="${pad.l}" y1="${by}" x2="${W-pad.r}" y2="${by}" stroke="#5a6b82" stroke-width="1" stroke-dasharray="4 3"/>`;
+  let path='';
+  data.forEach((d,i)=>{ const px=x(i),py=y(d.count); path+=(i?'L':'M')+px+' '+py+' '; });
+  const area=path+`L${x(data.length-1)} ${pad.t+ih} L${pad.l} ${pad.t+ih} Z`;
+  let pts='';
+  data.forEach((d,i)=>{
+    pts+=`<circle cx="${x(i)}" cy="${y(d.count)}" r="3.2" fill="#2aa7c4" stroke="#0a0e14" stroke-width="1.5"/>`;
+    pts+=`<text x="${x(i)}" y="${y(d.count)-8}" text-anchor="middle" class="axlbl" fill="#8496ab">${d.count}</text>`;
+    if(i%2===0||i===data.length-1){
+      pts+=`<text x="${x(i)}" y="${H-8}" text-anchor="middle" class="axlbl">${d.date.slice(5)}</text>`;
+    }
+  });
+  document.getElementById('chart').innerHTML=
+    `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">
+      <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2aa7c4" stop-opacity="0.28"/>
+        <stop offset="1" stop-color="#2aa7c4" stop-opacity="0"/>
+      </linearGradient></defs>
+      ${grid}${baseline}
+      <path d="${area}" fill="url(#g)"/>
+      <path d="${path}" fill="none" stroke="#2aa7c4" stroke-width="2"/>
+      ${pts}
+      <text x="${W-pad.r}" y="${by-5}" text-anchor="end" class="axlbl" fill="#5a6b82">pre-war ~100</text>
+    </svg>`;
+}
+load();
+setInterval(load, 5*60*1000);
+</script>
+</body>
+</html>

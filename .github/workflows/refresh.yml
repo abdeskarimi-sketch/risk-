@@ -37,6 +37,7 @@ jobs:
           if ! git diff --quiet -- data/state.json; then
             git add data/state.json
             git commit -m "auto: refresh cockpit state $(date -u +%FT%TZ)"
+            git pull --rebase origin main
             git push
           else
             echo "No change in state.json - nothing to commit."

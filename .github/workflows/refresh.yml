@@ -27,7 +27,7 @@ jobs:
       - name: Run refresh (Anthropic API + web search)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          COCKPIT_MODEL: 'claude-sonnet-4-6'
+          COCKPIT_MODEL: 'claude-sonnet-5'
         run: node scripts/refresh.js
 
       - name: Commit updated state

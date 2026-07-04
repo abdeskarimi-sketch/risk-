@@ -1,0 +1,43 @@
+name: refresh-cockpit
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-cockpit
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+
+      - name: Run refresh (Anthropic API + web search)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          COCKPIT_MODEL: 'claude-sonnet-4-6'
+        run: node scripts/refresh.js
+
+      - name: Commit updated state
+        run: |
+          git config user.name  "cockpit-bot"
+          git config user.email "cockpit-bot@users.noreply.github.com"
+          if ! git diff --quiet -- data/state.json; then
+            git add data/state.json
+            git commit -m "auto: refresh cockpit state $(date -u +%FT%TZ)"
+            git push
+          else
+            echo "No change in state.json - nothing to commit."
+          fi

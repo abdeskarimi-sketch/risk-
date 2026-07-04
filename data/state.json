@@ -1,0 +1,115 @@
+{
+  "meta": {
+    "generated_at": "2026-06-22T09:00:00Z",
+    "generated_by": "seed (manual)",
+    "as_of_label": "22 June 2026, 09:00 GMT",
+    "next_refresh_hint": "Cron runs every 6h; see workflow",
+    "data_confidence": "medium",
+    "disclaimer": "Open-source situational awareness. Analytical judgements, not market-implied probabilities. Transit counts vary by source (AIS-dark vessels, differing windows). Treat as directional. Not investment, legal, or operational advice."
+  },
+  "headline": {
+    "status_line": "Deal holding after weekend wobble; Hormuz de-confliction line established; commercial normalisation still weeks away",
+    "war_status": "Ceasefire / 60-day MoU window (started 18 June)",
+    "strait_status": "Contested-but-transiting: political reopening, NOT commercial normalisation",
+    "trade_posture": "Gulf-independent routing (Cape / non-Hormuz) still the prudent base case"
+  },
+  "scenarios": [
+    {
+      "id": "A",
+      "name": "Clean implementation",
+      "probability": 30,
+      "color": "#2E7D52",
+      "pathway": "De-mining on/near 30-day schedule; nuclear talks proceed; no snapback; Lebanon de-confliction holds",
+      "hormuz": "Physically reopens mid-to-late July; commercial normalisation through Q3",
+      "price": "Brent settles $75-82; commodity war-premium bleeds out over 4-8 wks",
+      "trade": "Normalisation on track; freight & insurance ease into Q3"
+    },
+    {
+      "id": "B",
+      "name": "Slow grind",
+      "probability": 35,
+      "color": "#C8861A",
+      "pathway": "Deal holds politically but implementation drags; recurring Lebanon-triggered closure scares walked back via mediation",
+      "hormuz": "Reopens late; normalisation pushed to Q4",
+      "price": "Brent $80-92; premium deflates slowly",
+      "trade": "Berth & vessel capacity the binding constraint as flows resume unevenly"
+    },
+    {
+      "id": "C",
+      "name": "Nuclear-phase breakdown / snapback",
+      "probability": 20,
+      "color": "#C0562B",
+      "pathway": "War-end & Hormuz hold, but 60-day nuclear talks collapse; UNSC snapback reimposed",
+      "hormuz": "Stays physically open; financial/insurance plumbing re-tightens",
+      "price": "Brent whipsaws $90-100 on sanctions return",
+      "trade": "Physical flows OK; sanctions/financial-channel risk returns to Gulf trade"
+    },
+    {
+      "id": "D",
+      "name": "Ceasefire relapse",
+      "probability": 15,
+      "color": "#B0202A",
+      "pathway": "Lebanon flare-up or IRGC spoiler breaks the deal; kinetic activity resumes; Iran enforces closure",
+      "hormuz": "Re-closes or becomes contested/kinetic again",
+      "price": "Brent spikes $110+",
+      "trade": "Emergency posture; pre-positioned inventory & non-Hormuz routing critical"
+    }
+  ],
+  "transit": {
+    "unit": "commercial vessels/day through Strait of Hormuz",
+    "prewar_baseline": 100,
+    "series": [
+      { "date": "2026-06-14", "count": 6, "source": "trackers" },
+      { "date": "2026-06-15", "count": 9, "source": "trackers" },
+      { "date": "2026-06-16", "count": 14, "source": "trackers" },
+      { "date": "2026-06-17", "count": 19, "source": "trackers" },
+      { "date": "2026-06-18", "count": 25, "source": "AXSMarine" },
+      { "date": "2026-06-19", "count": 22, "source": "trackers" },
+      { "date": "2026-06-20", "count": 35, "source": "Windward" },
+      { "date": "2026-06-21", "count": 12, "source": "Windward" }
+    ],
+    "note": "CENTCOM reports much higher counts (55 on 20 Jun) than commercial trackers (12-35). Gap = AIS-dark vessels + differing windows + political framing. Trend erratic; dipped on 21 Jun closure scare."
+  },
+  "gates": [
+    { "n": 1, "name": "Physical", "status": "red", "detail": "Mines still being cleared; at least one found post-signing. De-mining coordination mechanism only agreed 22 Jun.", "eta": "40-50 days from 18 Jun" },
+    { "n": 2, "name": "Insurance (JWC)", "status": "red", "detail": "No JWLA circular easing Listed Areas. War-risk premium still ~8x pre-war; 6 P&I clubs withdrew cover.", "eta": "Late Jul-Aug" },
+    { "n": 3, "name": "Crew / Labour (ITF/IBF)", "status": "red", "detail": "Warlike-Area status not lifted. Seafarers retain refusal + double-pay rights.", "eta": "Lags insurance" },
+    { "n": 4, "name": "Commercial", "status": "red", "detail": "Maersk/MSC still routing via Cape of Good Hope; major carriers have not returned.", "eta": "Q4 2026+" }
+  ],
+  "signals": [
+    { "label": "JWLA circular de-listing Hormuz", "state": "not yet", "why": "Authoritative insurance green light" },
+    { "label": "ITF/IBF Warlike-Area downgrade", "state": "not yet", "why": "Authoritative crew green light" },
+    { "label": "Maersk/MSC drop Cape reroute", "state": "not yet", "why": "Market voting with hulls" },
+    { "label": "Hormuz de-confliction line holding", "state": "active", "why": "Established 22 Jun; dampens incident risk" },
+    { "label": "Lebanon de-confliction cell", "state": "first test", "why": "Araghchi: 'first real test' of the deal" }
+  ],
+  "watchlist": [
+    "De-mining mechanism: actual clearance activity (not just the agreement to clear)",
+    "Lebanon de-confliction cell effectiveness - the fuse most likely to break the deal",
+    "Frozen-funds sequencing dispute (Iran wants release before final talks; US rejects)",
+    "Daily transit count stabilising vs swinging - tells you if de-confliction line works",
+    "Any single vessel attack - would flip Scenario B->D"
+  ],
+  "prices": {
+    "brent_usd": 81.7,
+    "wti_usd": 78.7,
+    "ttf_gas_eur": 42.5,
+    "war_risk_premium_multiple": "~8x pre-war",
+    "as_of": "2026-06-21"
+  },
+  "action_board": {
+    "hold": [
+      "Non-Hormuz / Cape routing as prudent base case until gates clear",
+      "Elevated inventory buffers on Gulf-dependent supply chains"
+    ],
+    "do_now": [
+      "Secure berth & vessel capacity ahead of any reopening scramble",
+      "Lock forward charters with laycan flexibility",
+      "Pre-negotiate war-risk insurance triggers with brokers",
+      "Track next Hormuz JWLA circular via war-risk broker"
+    ],
+    "stand_down": [
+      "Peak-crisis contingency measures as conditions de-escalate (conditionally)"
+    ]
+  }
+}

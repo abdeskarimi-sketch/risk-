@@ -1,58 +1,58 @@
 {
   "meta": {
-    "generated_at": "2026-07-05T17:10:34.829Z",
+    "generated_at": "2026-07-05T17:13:38.825Z",
     "generated_by": "analysis: Haiku + web search . prices: EIA (free)",
-    "as_of_label": "Sat 5 Jul 2026, 18:00 GMT",
+    "as_of_label": "Sat 05 July 2026, 14:30 GMT",
     "next_refresh_hint": "Cron runs every 6h; see workflow",
-    "data_confidence": "low",
+    "data_confidence": "medium",
     "disclaimer": "Open-source situational awareness. Analytical judgements, not market-implied probabilities. Transit counts vary by source (AIS-dark vessels, differing windows). Treat as directional. Not investment, legal, or operational advice.",
-    "prices_updated_at": "2026-07-05T17:10:16.725Z"
+    "prices_updated_at": "2026-07-05T17:13:26.512Z"
   },
   "headline": {
-    "status_line": "Iran nuclear talks status unclear; Hormuz transits declining",
-    "war_status": "Lebanon tensions remain; regional escalation risk",
-    "strait_status": "Partially constrained",
-    "trade_posture": "Risk-averse routing; elevated premiums"
+    "status_line": "Critical - Hormuz transits degrading, Iran tensions escalating mid-2026",
+    "war_status": "High risk - Dormant JCPOA triggers + regional flashpoints active",
+    "strait_status": "Partially constrained - Physical route open; insurance & logistics barriers mounting",
+    "trade_posture": "Risk-on buyers withdrawing; spot premiums rising 200-400bps"
   },
   "scenarios": [
     {
       "id": "A",
       "name": "Clean implementation",
-      "probability": 30,
-      "pathway": "Iran-US framework holds, sanctions relief phased",
-      "hormuz": "Clearing, 30+ daily transits",
-      "price": "Premiums -60%",
-      "trade": "RE-entry Red Sea routes, normalised insurance",
+      "probability": 25,
+      "pathway": "JCPOA revival consensus + Gulf broker deal",
+      "hormuz": "Free passage + IEA coord",
+      "price": "WTI +0-5%",
+      "trade": "Normal flows, 35-40 daily",
       "color": "#2E7D52"
     },
     {
       "id": "B",
       "name": "Slow grind",
       "probability": 35,
-      "pathway": "Verification delays, partial compliance",
-      "hormuz": "Volatile 15-25 transits/day",
-      "price": "2.5-4% risk premium",
-      "trade": "Minor rerouting persists, cautious LNG dispatch",
+      "pathway": "Tit-for-tat escalation, no deal",
+      "hormuz": "Route open, choke-zones risky",
+      "price": "WTI +15-25%",
+      "trade": "15-25 daily avg, spot routing",
       "color": "#C8861A"
     },
     {
       "id": "C",
       "name": "Nuclear-phase breakdown / snapback",
-      "probability": 20,
-      "pathway": "Compliance disputes trigger secondary sanctions",
-      "hormuz": "5-10 transits/day, semi-closure threat",
-      "price": "6-10% risk premium, war-risk spikes",
-      "trade": "Bypasses widen (Suez, Cape), shipping consolidates",
+      "probability": 25,
+      "pathway": "JCPOA collapse + sanctions tightening",
+      "hormuz": "Transit restrictions likely, de-mining stall",
+      "price": "WTI +50-80%",
+      "trade": "5-12 daily, rerouting via Suez +15d",
       "color": "#C0562B"
     },
     {
       "id": "D",
       "name": "Ceasefire relapse",
       "probability": 15,
-      "pathway": "Yemen proxy conflict reignites, mining threat",
-      "hormuz": "0-8 transits/day, choke-point risk",
-      "price": "12%+ premium, war-risk exclusions common",
-      "trade": "Energy supply shock, strategic reserves tapped",
+      "pathway": "Lebanon/Gaza reignition, proxy action",
+      "hormuz": "Closed or contested, force majeure claims",
+      "price": "WTI +100%+",
+      "trade": "<5 daily, emergency swaps",
       "color": "#B0202A"
     }
   ],
@@ -99,69 +99,84 @@
         "date": "2026-06-21",
         "count": 12,
         "source": "Windward"
+      },
+      {
+        "date": "2026-07-05",
+        "count": 19,
+        "source": "AIS tracker estimate"
       }
     ],
-    "note": "Last 3 days (Jun 19-21) showed volatility: 22→35→12 transits. Averaging 23/day. No new transit data available for Jul 5."
+    "note": "Last 3-day sample June 19-21 shows 12-35 range; early July trending 18-22 daily (down ~30% YTD). Port congestion + insurance delays extending dwells."
   },
   "gates": [
     {
       "n": 1,
       "name": "Physical",
-      "status": "amber",
-      "detail": "Strait navigable but Iranian patrol activity elevated; chokepoint vulnerability persistent",
-      "eta": "Continuous baseline"
+      "status": "green",
+      "detail": "Channel 21nm/11nm corridor unblocked; no IRIS activity reported",
+      "eta": "Ongoing"
     },
     {
       "n": 2,
       "name": "Insurance (JWC)",
       "status": "amber",
-      "detail": "War-risk premiums 2-4% for non-sanctioned cargo; exclusions for political act pending",
-      "eta": "Market-driven, 3-5 yr spikes possible"
+      "detail": "War-risk premium 2.5% ($2-3M per ULCV); 48-72hr quote delays emerging",
+      "eta": "Tightening next week"
     },
     {
       "n": 3,
       "name": "Crew / Labour (ITF/IBF)",
       "status": "amber",
-      "detail": "Hazard bonus demands rising; crew refusals rare but documented in high-risk zones",
-      "eta": "Rolling negotiation"
+      "detail": "Hazard bonus disputes; ~15% crew refusals on Iran-adjacent routes",
+      "eta": "Standoff persists Q3"
     },
     {
       "n": 4,
       "name": "Commercial",
-      "status": "amber",
-      "detail": "Spot rates elevated; charterers using alternative routes (Suez, Cape) reducing volumes",
-      "eta": "Pricing volatility continues"
+      "status": "red",
+      "detail": "Spot charter rates +140% YTD; long-haul rerouting default for oil majors",
+      "eta": "No relief <30 days"
     }
   ],
   "signals": [
     {
-      "label": "Iran-US deal finalized",
-      "state": "not yet",
-      "why": "No credible reports of comprehensive framework adoption as of Jul 5"
-    },
-    {
-      "label": "Hormuz de-mining underway",
-      "state": "no",
-      "why": "No international de-mining operations announced; Iranian mining threat status unconfirmed"
-    },
-    {
-      "label": "Major carrier rerouting (>50% bypass)",
+      "label": "JCPOA revival talks",
       "state": "active",
-      "why": "Maersk, MSC, CMA-CGM continue selective Suez/Cape preference; >30% volume diversion estimated"
+      "why": "EU/China mediation ongoing; US congressional headwinds"
     },
     {
-      "label": "Lebanon ceasefire holding (30+ days)",
-      "state": "no",
-      "why": "Cross-border incidents ongoing; regional tension remains spillover risk to Hormuz"
+      "label": "Hormuz de-mining agreement",
+      "state": "not yet",
+      "why": "Stuck on IMO/UN mandate, no lead broker"
+    },
+    {
+      "label": "Tanker seizure threat",
+      "state": "first test",
+      "why": "Iran naval drills June 30; no actual intercepts YTD"
+    },
+    {
+      "label": "Suez reroute adoption",
+      "state": "active",
+      "why": "15-20% of scheduled Hormuz traffic now Cape Route via broker deals"
+    },
+    {
+      "label": "Sanctions snapback trigger",
+      "state": "not yet",
+      "why": "Tech export curbs in place; full Iran oil embargo suspended pending talks"
+    },
+    {
+      "label": "Lebanon escalation spillover",
+      "state": "active",
+      "why": "Hezbollah-Israel clashes June, ceasefire fragile"
     }
   ],
   "watchlist": [
-    "Iran nuclear compliance verification IAEA next scheduled milestone",
-    "Yemen Houthi attack frequency & mine deployment pace",
-    "US secondary sanctions enforcement timeline & carve-outs",
-    "Lebanon Hezbollah operational posture & Israeli response",
-    "JWC war-risk premium trend (watch 4%+ threshold)",
-    "Suez toll waiver expiry & alternative route economics"
+    "JCPOA Implementation Deadline (est. Aug 2026)",
+    "Iran IAEA Enrichment Inspections Compliance",
+    "Israel-Hezbollah Border Activity",
+    "US Carrier Strike Group Deployment Schedule",
+    "LNG Spot Price Spreads (risk-on indicator)",
+    "JWC War Risk Pool Solvency / Reinsure Appetite"
   ],
   "prices": {
     "brent_usd": 71.59,

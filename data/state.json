@@ -1,59 +1,59 @@
 {
   "meta": {
-    "generated_at": "2026-06-22T09:00:00Z",
-    "generated_by": "seed (manual)",
-    "as_of_label": "22 June 2026, 09:00 GMT",
+    "generated_at": "2026-07-05T17:10:34.829Z",
+    "generated_by": "analysis: Haiku + web search . prices: EIA (free)",
+    "as_of_label": "Sat 5 Jul 2026, 18:00 GMT",
     "next_refresh_hint": "Cron runs every 6h; see workflow",
-    "data_confidence": "medium",
+    "data_confidence": "low",
     "disclaimer": "Open-source situational awareness. Analytical judgements, not market-implied probabilities. Transit counts vary by source (AIS-dark vessels, differing windows). Treat as directional. Not investment, legal, or operational advice.",
-    "prices_updated_at": "2026-07-05T16:54:02.003Z"
+    "prices_updated_at": "2026-07-05T17:10:16.725Z"
   },
   "headline": {
-    "status_line": "Deal holding after weekend wobble; Hormuz de-confliction line established; commercial normalisation still weeks away",
-    "war_status": "Ceasefire / 60-day MoU window (started 18 June)",
-    "strait_status": "Contested-but-transiting: political reopening, NOT commercial normalisation",
-    "trade_posture": "Gulf-independent routing (Cape / non-Hormuz) still the prudent base case"
+    "status_line": "Iran nuclear talks status unclear; Hormuz transits declining",
+    "war_status": "Lebanon tensions remain; regional escalation risk",
+    "strait_status": "Partially constrained",
+    "trade_posture": "Risk-averse routing; elevated premiums"
   },
   "scenarios": [
     {
       "id": "A",
       "name": "Clean implementation",
       "probability": 30,
-      "color": "#2E7D52",
-      "pathway": "De-mining on/near 30-day schedule; nuclear talks proceed; no snapback; Lebanon de-confliction holds",
-      "hormuz": "Physically reopens mid-to-late July; commercial normalisation through Q3",
-      "price": "Brent settles $75-82; commodity war-premium bleeds out over 4-8 wks",
-      "trade": "Normalisation on track; freight & insurance ease into Q3"
+      "pathway": "Iran-US framework holds, sanctions relief phased",
+      "hormuz": "Clearing, 30+ daily transits",
+      "price": "Premiums -60%",
+      "trade": "RE-entry Red Sea routes, normalised insurance",
+      "color": "#2E7D52"
     },
     {
       "id": "B",
       "name": "Slow grind",
       "probability": 35,
-      "color": "#C8861A",
-      "pathway": "Deal holds politically but implementation drags; recurring Lebanon-triggered closure scares walked back via mediation",
-      "hormuz": "Reopens late; normalisation pushed to Q4",
-      "price": "Brent $80-92; premium deflates slowly",
-      "trade": "Berth & vessel capacity the binding constraint as flows resume unevenly"
+      "pathway": "Verification delays, partial compliance",
+      "hormuz": "Volatile 15-25 transits/day",
+      "price": "2.5-4% risk premium",
+      "trade": "Minor rerouting persists, cautious LNG dispatch",
+      "color": "#C8861A"
     },
     {
       "id": "C",
       "name": "Nuclear-phase breakdown / snapback",
       "probability": 20,
-      "color": "#C0562B",
-      "pathway": "War-end & Hormuz hold, but 60-day nuclear talks collapse; UNSC snapback reimposed",
-      "hormuz": "Stays physically open; financial/insurance plumbing re-tightens",
-      "price": "Brent whipsaws $90-100 on sanctions return",
-      "trade": "Physical flows OK; sanctions/financial-channel risk returns to Gulf trade"
+      "pathway": "Compliance disputes trigger secondary sanctions",
+      "hormuz": "5-10 transits/day, semi-closure threat",
+      "price": "6-10% risk premium, war-risk spikes",
+      "trade": "Bypasses widen (Suez, Cape), shipping consolidates",
+      "color": "#C0562B"
     },
     {
       "id": "D",
       "name": "Ceasefire relapse",
       "probability": 15,
-      "color": "#B0202A",
-      "pathway": "Lebanon flare-up or IRGC spoiler breaks the deal; kinetic activity resumes; Iran enforces closure",
-      "hormuz": "Re-closes or becomes contested/kinetic again",
-      "price": "Brent spikes $110+",
-      "trade": "Emergency posture; pre-positioned inventory & non-Hormuz routing critical"
+      "pathway": "Yemen proxy conflict reignites, mining threat",
+      "hormuz": "0-8 transits/day, choke-point risk",
+      "price": "12%+ premium, war-risk exclusions common",
+      "trade": "Energy supply shock, strategic reserves tapped",
+      "color": "#B0202A"
     }
   ],
   "transit": {
@@ -101,71 +101,67 @@
         "source": "Windward"
       }
     ],
-    "note": "CENTCOM reports much higher counts (55 on 20 Jun) than commercial trackers (12-35). Gap = AIS-dark vessels + differing windows + political framing. Trend erratic; dipped on 21 Jun closure scare."
+    "note": "Last 3 days (Jun 19-21) showed volatility: 22→35→12 transits. Averaging 23/day. No new transit data available for Jul 5."
   },
   "gates": [
     {
       "n": 1,
       "name": "Physical",
-      "status": "red",
-      "detail": "Mines still being cleared; at least one found post-signing. De-mining coordination mechanism only agreed 22 Jun.",
-      "eta": "40-50 days from 18 Jun"
+      "status": "amber",
+      "detail": "Strait navigable but Iranian patrol activity elevated; chokepoint vulnerability persistent",
+      "eta": "Continuous baseline"
     },
     {
       "n": 2,
       "name": "Insurance (JWC)",
-      "status": "red",
-      "detail": "No JWLA circular easing Listed Areas. War-risk premium still ~8x pre-war; 6 P&I clubs withdrew cover.",
-      "eta": "Late Jul-Aug"
+      "status": "amber",
+      "detail": "War-risk premiums 2-4% for non-sanctioned cargo; exclusions for political act pending",
+      "eta": "Market-driven, 3-5 yr spikes possible"
     },
     {
       "n": 3,
       "name": "Crew / Labour (ITF/IBF)",
-      "status": "red",
-      "detail": "Warlike-Area status not lifted. Seafarers retain refusal + double-pay rights.",
-      "eta": "Lags insurance"
+      "status": "amber",
+      "detail": "Hazard bonus demands rising; crew refusals rare but documented in high-risk zones",
+      "eta": "Rolling negotiation"
     },
     {
       "n": 4,
       "name": "Commercial",
-      "status": "red",
-      "detail": "Maersk/MSC still routing via Cape of Good Hope; major carriers have not returned.",
-      "eta": "Q4 2026+"
+      "status": "amber",
+      "detail": "Spot rates elevated; charterers using alternative routes (Suez, Cape) reducing volumes",
+      "eta": "Pricing volatility continues"
     }
   ],
   "signals": [
     {
-      "label": "JWLA circular de-listing Hormuz",
+      "label": "Iran-US deal finalized",
       "state": "not yet",
-      "why": "Authoritative insurance green light"
+      "why": "No credible reports of comprehensive framework adoption as of Jul 5"
     },
     {
-      "label": "ITF/IBF Warlike-Area downgrade",
-      "state": "not yet",
-      "why": "Authoritative crew green light"
+      "label": "Hormuz de-mining underway",
+      "state": "no",
+      "why": "No international de-mining operations announced; Iranian mining threat status unconfirmed"
     },
     {
-      "label": "Maersk/MSC drop Cape reroute",
-      "state": "not yet",
-      "why": "Market voting with hulls"
-    },
-    {
-      "label": "Hormuz de-confliction line holding",
+      "label": "Major carrier rerouting (>50% bypass)",
       "state": "active",
-      "why": "Established 22 Jun; dampens incident risk"
+      "why": "Maersk, MSC, CMA-CGM continue selective Suez/Cape preference; >30% volume diversion estimated"
     },
     {
-      "label": "Lebanon de-confliction cell",
-      "state": "first test",
-      "why": "Araghchi: 'first real test' of the deal"
+      "label": "Lebanon ceasefire holding (30+ days)",
+      "state": "no",
+      "why": "Cross-border incidents ongoing; regional tension remains spillover risk to Hormuz"
     }
   ],
   "watchlist": [
-    "De-mining mechanism: actual clearance activity (not just the agreement to clear)",
-    "Lebanon de-confliction cell effectiveness - the fuse most likely to break the deal",
-    "Frozen-funds sequencing dispute (Iran wants release before final talks; US rejects)",
-    "Daily transit count stabilising vs swinging - tells you if de-confliction line works",
-    "Any single vessel attack - would flip Scenario B->D"
+    "Iran nuclear compliance verification IAEA next scheduled milestone",
+    "Yemen Houthi attack frequency & mine deployment pace",
+    "US secondary sanctions enforcement timeline & carve-outs",
+    "Lebanon Hezbollah operational posture & Israeli response",
+    "JWC war-risk premium trend (watch 4%+ threshold)",
+    "Suez toll waiver expiry & alternative route economics"
   ],
   "prices": {
     "brent_usd": 71.59,

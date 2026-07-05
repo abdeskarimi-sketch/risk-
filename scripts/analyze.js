@@ -44,7 +44,8 @@ Rules: 4 scenario probabilities are ints summing to EXACTLY 100. Keep generic/pu
   const data = await res.json();
   let txt = (data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('\n').trim();
   const f = txt.match(/```(?:json)?\s*([\s\S]*?)```/); if(f) txt=f[1].trim();
-  const i=txt.indexOf('{'), j=txt.lastIndexOf('}'); if(i<0||j<0){ console.error('No JSON'); process.exit(1); }
+  const i=txt.indexOf('{'), j=txt.lastIndexOf('}');
+  if(i<0||j<0){ console.error('No JSON. Raw model text was:\n', txt.slice(0,1500)); process.exit(1); }
   let a; try{ a=JSON.parse(txt.slice(i,j+1)); }catch(e){ console.error('Parse fail:', e.message); process.exit(1); }
 
   // validate

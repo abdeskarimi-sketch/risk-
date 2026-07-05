@@ -5,7 +5,8 @@
     "as_of_label": "22 June 2026, 09:00 GMT",
     "next_refresh_hint": "Cron runs every 6h; see workflow",
     "data_confidence": "medium",
-    "disclaimer": "Open-source situational awareness. Analytical judgements, not market-implied probabilities. Transit counts vary by source (AIS-dark vessels, differing windows). Treat as directional. Not investment, legal, or operational advice."
+    "disclaimer": "Open-source situational awareness. Analytical judgements, not market-implied probabilities. Transit counts vary by source (AIS-dark vessels, differing windows). Treat as directional. Not investment, legal, or operational advice.",
+    "prices_updated_at": "2026-07-05T16:54:02.003Z"
   },
   "headline": {
     "status_line": "Deal holding after weekend wobble; Hormuz de-confliction line established; commercial normalisation still weeks away",
@@ -59,29 +60,105 @@
     "unit": "commercial vessels/day through Strait of Hormuz",
     "prewar_baseline": 100,
     "series": [
-      { "date": "2026-06-14", "count": 6, "source": "trackers" },
-      { "date": "2026-06-15", "count": 9, "source": "trackers" },
-      { "date": "2026-06-16", "count": 14, "source": "trackers" },
-      { "date": "2026-06-17", "count": 19, "source": "trackers" },
-      { "date": "2026-06-18", "count": 25, "source": "AXSMarine" },
-      { "date": "2026-06-19", "count": 22, "source": "trackers" },
-      { "date": "2026-06-20", "count": 35, "source": "Windward" },
-      { "date": "2026-06-21", "count": 12, "source": "Windward" }
+      {
+        "date": "2026-06-14",
+        "count": 6,
+        "source": "trackers"
+      },
+      {
+        "date": "2026-06-15",
+        "count": 9,
+        "source": "trackers"
+      },
+      {
+        "date": "2026-06-16",
+        "count": 14,
+        "source": "trackers"
+      },
+      {
+        "date": "2026-06-17",
+        "count": 19,
+        "source": "trackers"
+      },
+      {
+        "date": "2026-06-18",
+        "count": 25,
+        "source": "AXSMarine"
+      },
+      {
+        "date": "2026-06-19",
+        "count": 22,
+        "source": "trackers"
+      },
+      {
+        "date": "2026-06-20",
+        "count": 35,
+        "source": "Windward"
+      },
+      {
+        "date": "2026-06-21",
+        "count": 12,
+        "source": "Windward"
+      }
     ],
     "note": "CENTCOM reports much higher counts (55 on 20 Jun) than commercial trackers (12-35). Gap = AIS-dark vessels + differing windows + political framing. Trend erratic; dipped on 21 Jun closure scare."
   },
   "gates": [
-    { "n": 1, "name": "Physical", "status": "red", "detail": "Mines still being cleared; at least one found post-signing. De-mining coordination mechanism only agreed 22 Jun.", "eta": "40-50 days from 18 Jun" },
-    { "n": 2, "name": "Insurance (JWC)", "status": "red", "detail": "No JWLA circular easing Listed Areas. War-risk premium still ~8x pre-war; 6 P&I clubs withdrew cover.", "eta": "Late Jul-Aug" },
-    { "n": 3, "name": "Crew / Labour (ITF/IBF)", "status": "red", "detail": "Warlike-Area status not lifted. Seafarers retain refusal + double-pay rights.", "eta": "Lags insurance" },
-    { "n": 4, "name": "Commercial", "status": "red", "detail": "Maersk/MSC still routing via Cape of Good Hope; major carriers have not returned.", "eta": "Q4 2026+" }
+    {
+      "n": 1,
+      "name": "Physical",
+      "status": "red",
+      "detail": "Mines still being cleared; at least one found post-signing. De-mining coordination mechanism only agreed 22 Jun.",
+      "eta": "40-50 days from 18 Jun"
+    },
+    {
+      "n": 2,
+      "name": "Insurance (JWC)",
+      "status": "red",
+      "detail": "No JWLA circular easing Listed Areas. War-risk premium still ~8x pre-war; 6 P&I clubs withdrew cover.",
+      "eta": "Late Jul-Aug"
+    },
+    {
+      "n": 3,
+      "name": "Crew / Labour (ITF/IBF)",
+      "status": "red",
+      "detail": "Warlike-Area status not lifted. Seafarers retain refusal + double-pay rights.",
+      "eta": "Lags insurance"
+    },
+    {
+      "n": 4,
+      "name": "Commercial",
+      "status": "red",
+      "detail": "Maersk/MSC still routing via Cape of Good Hope; major carriers have not returned.",
+      "eta": "Q4 2026+"
+    }
   ],
   "signals": [
-    { "label": "JWLA circular de-listing Hormuz", "state": "not yet", "why": "Authoritative insurance green light" },
-    { "label": "ITF/IBF Warlike-Area downgrade", "state": "not yet", "why": "Authoritative crew green light" },
-    { "label": "Maersk/MSC drop Cape reroute", "state": "not yet", "why": "Market voting with hulls" },
-    { "label": "Hormuz de-confliction line holding", "state": "active", "why": "Established 22 Jun; dampens incident risk" },
-    { "label": "Lebanon de-confliction cell", "state": "first test", "why": "Araghchi: 'first real test' of the deal" }
+    {
+      "label": "JWLA circular de-listing Hormuz",
+      "state": "not yet",
+      "why": "Authoritative insurance green light"
+    },
+    {
+      "label": "ITF/IBF Warlike-Area downgrade",
+      "state": "not yet",
+      "why": "Authoritative crew green light"
+    },
+    {
+      "label": "Maersk/MSC drop Cape reroute",
+      "state": "not yet",
+      "why": "Market voting with hulls"
+    },
+    {
+      "label": "Hormuz de-confliction line holding",
+      "state": "active",
+      "why": "Established 22 Jun; dampens incident risk"
+    },
+    {
+      "label": "Lebanon de-confliction cell",
+      "state": "first test",
+      "why": "Araghchi: 'first real test' of the deal"
+    }
   ],
   "watchlist": [
     "De-mining mechanism: actual clearance activity (not just the agreement to clear)",
@@ -91,11 +168,11 @@
     "Any single vessel attack - would flip Scenario B->D"
   ],
   "prices": {
-    "brent_usd": 81.7,
-    "wti_usd": 78.7,
+    "brent_usd": 71.59,
+    "wti_usd": 71.87,
     "ttf_gas_eur": 42.5,
     "war_risk_premium_multiple": "~8x pre-war",
-    "as_of": "2026-06-21"
+    "as_of": "2026-06-29"
   },
   "action_board": {
     "hold": [

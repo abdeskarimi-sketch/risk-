@@ -6,7 +6,7 @@
     "next_refresh_hint": "Cron runs every 6h; see workflow",
     "data_confidence": "medium",
     "disclaimer": "Open-source situational awareness. Analytical judgements, not market-implied probabilities. Transit counts vary by source (AIS-dark vessels, differing windows). Treat as directional. Not investment, legal, or operational advice.",
-    "prices_updated_at": "2026-08-26T06:31:22.966Z"
+    "prices_updated_at": "2026-08-27T17:07:09.889Z"
   },
   "headline": {
     "status_line": "Critical - Hormuz transits degrading, Iran tensions escalating mid-2026",
@@ -179,11 +179,11 @@
     "JWC War Risk Pool Solvency / Reinsure Appetite"
   ],
   "prices": {
-    "brent_usd": 95.29,
-    "wti_usd": 86.48,
+    "brent_usd": 88.24,
+    "wti_usd": 83.9,
     "ttf_gas_eur": 42.5,
     "war_risk_premium_multiple": "~8x pre-war",
-    "as_of": "2026-08-18"
+    "as_of": "2026-08-25"
   },
   "action_board": {
     "hold": [
